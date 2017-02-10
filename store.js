@@ -1,11 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import  logger  from 'redux-logger';
-import board from './reducers/board';
-import task from './reducers/tasks';
+import Board from './reducers/board';
+import Shape from './reducers/shape';
 
 export default createStore(combineReducers({
-  task,
-  board
+  Shape,
+  Board
 }),
 {},
 applyMiddleware(logger()));

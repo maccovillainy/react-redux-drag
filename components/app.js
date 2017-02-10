@@ -1,45 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import  { findDOMNode } from 'react-dom'
 
+import Tab from './tab';
 
-import Board from './board';
 import { setBoard } from '../actions/actions';
 
-class App extends React.Component{
-  add(){
-    let val = findDOMNode(this.refs.board);
-    this.props.setBoard(val.value);
-    val.value = ''
-  }
-  render(){
-    return(
-      <div>
-        <h1>Welcome to todo</h1>
-        <div>
-          <input ref="board" type="text"/>
-          <button onClick={()=> this.add()}>Add board</button>
-          <section>
-            {this.props.boards.map(item => (
-                <Board key={item.id} id={item.id} name={item.name}/>
-            ))}
-          </section>
-        </div>
-      </div>
-    )
-  }
-}
+let boards = ['board 1', 'board 2', 'board 3'];
 
-const get = (state) => {
-  return {
-      boards: state.board.boards
-  }
-};
-const set = (dispatch) => {
+@connect(null, (dispatch) => {
   return {
     setBoard: (name) => {
       dispatch(setBoard(name))
     }
   }
-};
-export default connect(get,set)(App);
+})
+class App extends React.Component{
+  componentDidMount(){
+    boards.forEach(item => this.props.setBoard(item))
+  }
+  render(){
+    return(
+      <div>
+        <Tab />
+      </div>
+    )
+  }
+}
+export default App;

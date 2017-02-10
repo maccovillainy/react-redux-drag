@@ -1,38 +1,44 @@
-export function setBoard(name){
+export function setBoard(title){
   return {
     type: "ADD_BOARD",
-    payload: name
-  }
-}export function unsetBoard(id){
-  return {
-    type: "REMOVE_BOARD",
-    payload: id
-  }
-}
-
-export function setTask(name, parentId){
-  return {
-    type: "ADD_TASK",
     payload: {
-      name,
-      parentId
-
+      title
     }
   }
 }
-export function removeTask(id){
+
+export function setShape(type, boardId, coords, color, zIndex){
   return {
-    type: "REMOVE_TASK",
-    payload: id
+    type: "ADD_SHAPE",
+    payload: {
+      type,
+      boardId,
+      coords,
+      color, 
+      zIndex
+    }
   }
 }
-export function mark(id, checked){
+export function updateShape(id, coords){
   return {
-    type: "MARK",
+    type: "UPDATE_SHAPE",
     payload: {
       id,
-      checked
-
+      coords
     }
   }
 }
+
+export function setFigPos(property){
+  return {
+    type: "SET_PROPERTY",
+    payload: property
+  }
+}
+
+export function indexIncrement(){
+  return {
+    type: "INDEX_INCREMENT"
+  }
+}
+
