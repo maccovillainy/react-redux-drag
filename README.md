@@ -2,4 +2,4 @@ npm i
 npm i -g http-server
 webpack
 
-in /public -     http-server
+in /public :     http-server
